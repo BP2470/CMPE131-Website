@@ -27,11 +27,12 @@
 
 ## Use Cases for 6 sub functional requirements
 
+## Use Case 1
 1. Use Case Name (Should match functional requirement name)
 - **Pre-condition:** <can be a list or short description> 
-
+  1. 
 - **Trigger:** <can be a list or short description> 
-
+  1. 
 - **Primary Sequence:**
   
   1. 
@@ -46,11 +47,22 @@
   10. <Try to stick to a max of 10 steps>
 
 - **Primary Postconditions:** <can be a list or short description> 
-
+  1.
 - **Alternate Sequence:** <you can have more than one alternate sequence to describe multiple issues that may arise>
   
   1. 
   2. 
   3. ...
+## Use Case 2
+2. 
+## Use Case 3
+3. 
+## Use Case 4
+4. 
+## Use Case 5
+5. 
+## Use Case 6
+6. 
+
 
 
