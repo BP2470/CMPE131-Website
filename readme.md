@@ -1,4 +1,4 @@
 # CMPE 131 Website Project
 - Brian Pham (@BP2470)
-- Andrew Chau (@)
-- Alexander Iakovlev (@)
+- Andrew Chau (@AndrewC04)
+- Alexander Iakovlev (@alexander-iakovlev)

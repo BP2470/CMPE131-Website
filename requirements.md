@@ -3,22 +3,22 @@
 2. Logout
 3. Create new account
 4. Delete account
-5. requirement
-6. requirement
-7. requirement
-8. requirement
-9. requirement
-10. requirement
-11. requirement
-12. HP requirement
+5. Add to cart
+6. Buy item (Fake credit card entry)
+7. Find items
+8. Bid on item
+9. Add item to seller store
+10. User profiles
+11. See all items available from all of the sellers
+12. Connect with Google Calendar API*
 
 ## Non-functional Requirements
-1. non-functional
-2. non-functional
-3. non-functional
-4. HP non-functional
+1. 
+2. 
+3. 
+4. Only expected to work on Google Chrome
 
-## Use Cases for 6 sub functional requirements
+## Use Cases for 6 functional requirements
 
 1. Use Case Name (Should match functional requirement name)
 - **Pre-condition:** <can be a list or short description> 
