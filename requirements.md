@@ -13,7 +13,7 @@
 12. Connect with Google Calendar API*
 
 ## Non-functional Requirements
-1. 
+1. The system shall be maintainable
 2. 
 3. 
 4. Only expected to work on Google Chrome
