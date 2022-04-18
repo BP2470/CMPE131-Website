@@ -32,9 +32,9 @@
 - **Primary Postconditions:**
   1. Website displays the item in the cart page
 - **Alternate Sequence:** 
-  1. Customer adds a nonexistent/invalid item to cart
-    1. System displays error message to customer
-    2. System does not add invalid item to cart
+    1. Customer adds a nonexistent/invalid item to cart
+        1. System displays error message to customer
+        2. System does not add invalid item to cart
 
 2. Buy item (Fake credit card entry)
 - **Pre-condition:**
