@@ -13,7 +13,7 @@
 12. Connect with Google Calendar API*
 
 ## Non-functional Requirements
-1. The software should easy to update
+1. The system should be easy to maintain
 2. Easy to deploy
 3. All the transactions should be less than 10 ms
 4. Only expected to work on Google Chrome
