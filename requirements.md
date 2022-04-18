@@ -88,3 +88,17 @@
 - **Primary Sequence:**
 - **Primary Postconditions:** 
 - **Alternate Sequence:** 
+
+7. Use Case Name
+- **Pre-condition:**
+- **Trigger:**
+- **Primary Sequence:**
+- **Primary Postconditions:**
+- **Alternate Sequence:**
+
+8. Use Case Name
+- **Pre-condition:**
+- **Trigger:**
+- **Primary Sequence:**
+- **Primary Postconditions:**
+- **Alternate Sequence:**
