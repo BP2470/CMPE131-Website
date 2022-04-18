@@ -13,45 +13,53 @@
 12. Connect with Google Calendar API*
 
 ## Non-functional Requirements
-1. The system should be easy to maintain
-2. Easy to deploy
-3. All the transactions should be less than 10 ms
+1. System shall be maintainable
+2. Website should be easy to deploy and access
+3. Transactions should be submitted within 10ms
 4. Only expected to work on Google Chrome
 
 ## Use Cases for 6 functional requirements
-
-1. Use Case Name (Should match functional requirement name)
-- **Pre-condition:** <can be a list or short description> 
-  1. 
-- **Trigger:** <can be a list or short description> 
-  1. 
-- **Primary Sequence:**
-  
-  1. 
-  2. 
-  3. 
-  4. 
-  5. 
-  6. 
-  7. 
-  8. 
-  9. 
-  10. <Try to stick to a max of 10 steps>
-
-- **Primary Postconditions:** <can be a list or short description> 
-  1.
-- **Alternate Sequence:** <you can have more than one alternate sequence to describe multiple issues that may arise>
-  
-  1. 
-  2. 
-  3. ...
-
-2. Use Case Name
-- **Pre-condition:**
+1. Add to cart
+- **Pre-condition:** 
+  1. Customer has previously made an account and logged in
 - **Trigger:** 
+  1. Customer clicks "Add to cart" on item's page
 - **Primary Sequence:**
-- **Primary Postconditions:** 
+  1. System prompts customer with an "Add to cart?" confirmation
+  2. Customer confirms whether to add to cart
+  3. System checks if item is valid
+  4. System adds item to cart
+- **Primary Postconditions:**
+  1. Website displays the item in the cart page
 - **Alternate Sequence:** 
+    1. Customer adds a nonexistent/invalid item to cart
+        1. System displays error message to customer
+        2. System does not add invalid item to cart
+
+2. Buy item (Fake credit card entry)
+- **Pre-condition:**
+  1. Customer has previously made an account and logged in
+  2. Customer has either directly clicks buy item button or has at least an item in cart
+- **Trigger:** 
+  1. Customer clicks "Buy item" on item's page or from cart's page
+- **Primary Sequence:**
+  1. System prompts customer with a "Buy item?" confirmation
+  2. Customer confirms whether to buy item
+  3. System checks if item is valid
+  4. System prompts customer with a "Add credit card" entry
+  5. Customer adds in credit card credentials
+  6. System checks "credit card credentials"
+  7. System charges customer
+  8. System prompts customer that item is bought
+- **Primary Postconditions:** 
+    1. Customer "receives" item
+        1. System removes item in cart
+        2. System updates item's page to "Sold out!"
+- **Alternate Sequence:** 
+    1. Customer buys a nonexistent/invalid item
+        1. System displays error message to customer
+        2. System does not undergo "Buy item" sequence
+        3. System removes the nonexistent/invalid item
 
 3. Use Case Name
 - **Pre-condition:**
