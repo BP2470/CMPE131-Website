@@ -14,7 +14,7 @@
 
 ## Non-functional Requirements
 1. System shall be maintainable
-2. Website should be easy to access
+2. Website should be easy to deploy and access
 3. Transactions should be submitted within 10ms
 4. Only expected to work on Google Chrome
 
@@ -33,8 +33,8 @@
   1. Website displays the item in the cart page
 - **Alternate Sequence:** 
   1. Customer adds a nonexistent/invalid item to cart
-  - System displays error message to customer
-  - System does not add invalid item to cart
+    1. System displays error message to customer
+    2. System does not add invalid item to cart
 
 2. Buy item (Fake credit card entry)
 - **Pre-condition:**
@@ -53,13 +53,13 @@
   8. System prompts customer that item is bought
 - **Primary Postconditions:** 
   1. Customer "receives" item
-    - System removes item in cart
-    - System updates item's page to "Sold out!"
+    1. System removes item in cart
+    2. System updates item's page to "Sold out!"
 - **Alternate Sequence:** 
   1. Customer buys a nonexistent/invalid item
-    - System displays error message to customer
-    - System does not undergo "Buy item" sequence
-    - System removes the nonexistent/invalid item
+    1. System displays error message to customer
+    2. System does not undergo "Buy item" sequence
+    3. System removes the nonexistent/invalid item
 
 3. Use Case Name
 - **Pre-condition:**
