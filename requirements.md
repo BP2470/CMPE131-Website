@@ -52,14 +52,14 @@
   7. System charges customer
   8. System prompts customer that item is bought
 - **Primary Postconditions:** 
-  1. Customer "receives" item
-    1. System removes item in cart
-    2. System updates item's page to "Sold out!"
+    1. Customer "receives" item
+        1. System removes item in cart
+        2. System updates item's page to "Sold out!"
 - **Alternate Sequence:** 
-  1. Customer buys a nonexistent/invalid item
-    1. System displays error message to customer
-    2. System does not undergo "Buy item" sequence
-    3. System removes the nonexistent/invalid item
+    1. Customer buys a nonexistent/invalid item
+        1. System displays error message to customer
+        2. System does not undergo "Buy item" sequence
+        3. System removes the nonexistent/invalid item
 
 3. Use Case Name
 - **Pre-condition:**
