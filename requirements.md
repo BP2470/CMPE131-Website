@@ -12,10 +12,11 @@
 11. See all items available from all of the sellers
 12. Connect with Google Calendar API*
 
-## Non-functional Requirements
-1. The system shall be maintainable
-2. 
-3. 
+## Non-functional Requirements 
+
+1. The system should be easy to maintain
+2. Easy to deploy
+3. All the transactions should be less than 10 ms
 4. Only expected to work on Google Chrome
 
 ## Use Cases for 6 functional requirements
