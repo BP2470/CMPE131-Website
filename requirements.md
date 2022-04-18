@@ -11,6 +11,8 @@
 10. User profiles
 11. See all items available from all of the sellers
 12. Connect with Google Calendar API*
+13. User ratings
+14. Add pictures for items
 
 ## Non-functional Requirements 
 
@@ -19,7 +21,7 @@
 3. All the transactions should be less than 10 ms
 4. Only expected to work on Google Chrome
 
-## Use Cases for 6 functional requirements
+## Use Cases for 8 functional requirements
 
 1. Use Case Name (Should match functional requirement name)
 - **Pre-condition:** <can be a list or short description> 
