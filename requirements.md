@@ -11,6 +11,8 @@
 10. User profiles
 11. See all items available from all of the sellers
 12. Connect with Google Calendar API*
+13. User ratings
+14. Splash Page
 
 ## Non-functional Requirements
 1. System shall be maintainable
@@ -88,3 +90,34 @@
 - **Primary Sequence:**
 - **Primary Postconditions:** 
 - **Alternate Sequence:** 
+
+7. User ratings
+- **Pre-condition:**
+    1. User has previously made an account
+- **Trigger:**
+    1. Customer click rating buttom after buy item
+- **Primary Sequence:**
+    1. System prompts customer with an "rate 1-5, 5 is the most satisfied" confirmation
+    2. Customer confirms the rating
+    3. System saves the rating
+- **Primary Postconditions:**
+    1. Website display the rating on the page
+- **Alternate Sequence:**
+    1. Customer does not confirm the rating
+    2. System does not save the rating
+
+8. Splash Page
+- **Pre-condition:**
+    1. User type the webiste address
+- **Trigger:**
+    1. User press enter in the website address bar
+    2. User press "Enter" button in the middle of the page
+- **Primary Sequence:**
+    1. User type the website address in the address bar
+    2. System display the splash page to the user
+    3. User click "Enter" button
+- **Primary Postconditions:**
+    1. User are redirected to the website's main page
+- **Alternate Sequence:**
+    1. User does not click "Enter" button
+    2. Website stays on the splash page
