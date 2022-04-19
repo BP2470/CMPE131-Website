@@ -12,15 +12,7 @@
 11. See all items available from all of the sellers
 12. Connect with Google Calendar API*
 13. User ratings
-14. Add pictures for items
-
-## Non-functional Requirements 
-
-<<<<<<< HEAD
-1. The system should be easy to maintain
-2. Easy to deploy
-3. All the transactions should be less than 10 ms
-4. Only expected to work on Google Chrome
+14. Splash Page
 
 ## Non-functional Requirements
 1. System shall be maintainable
@@ -34,7 +26,6 @@
   1. Customer has previously made an account and logged in
 - **Trigger:** 
   1. Customer clicks "Add to cart" on item's page
->>>>>>> master
 - **Primary Sequence:**
   1. System prompts customer with an "Add to cart?" confirmation
   2. Customer confirms whether to add to cart
