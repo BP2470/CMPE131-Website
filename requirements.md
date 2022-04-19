@@ -11,6 +11,8 @@
 10. User profiles
 11. See all items available from all of the sellers
 12. Connect with Google Calendar API*
+13. User ratings
+14. Splash Page
 
 ## Non-functional Requirements
 1. System shall be maintainable
