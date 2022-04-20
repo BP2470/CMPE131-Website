@@ -20,7 +20,7 @@
 3. Transactions should be submitted within 10ms
 4. Only expected to work on Google Chrome
 
-## Use Cases for 6 functional requirements
+## Use Cases for 8 functional requirements
 1. Add to cart
 - **Pre-condition:** 
   1. Customer has previously made an account and logged in
@@ -103,19 +103,33 @@
   1. Customer enters no amount to bid on item
 	1. System prompts the customer to enter an amount to bid 
 
-5. Use Case Name
+5. User Profiles
 - **Pre-condition:**
-- **Trigger:** 
+	1. User has previously made an account
+- **Trigger:**
+	1. User clicks profile button on seller
 - **Primary Sequence:**
-- **Primary Postconditions:** 
-- **Alternate Sequence:** 
+	1. System loads seller page from file
+	2. System displays page
+- **Primary Postconditions:**
+	1. has previously made an account
+- **Alternate Sequence:**
+	1. User does not click on profile of seller
+	2. No action is performed by system
 
-6. Use Case Name
+6. Connect with Google Calendar API*
 - **Pre-condition:**
+	1. Item sold has registered dates for bidding
 - **Trigger:** 
+	1. Seller posts item with bidding dates
 - **Primary Sequence:**
-- **Primary Postconditions:** 
+	1. User clicks button to see selling dates in google calendar
+	2. System retrieves google calendar for seller's items
+- **Primary Postconditions:**
+	1. System displays google calendar info
 - **Alternate Sequence:** 
+	1. User does not request google calendar info
+	2. No action required from system
 
 7. User ratings
 - **Pre-condition:**
