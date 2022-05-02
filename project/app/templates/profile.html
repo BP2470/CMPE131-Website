@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>CMPE131</title>
+    <body>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        <h1>Someone's profile</h1>
+        <br/>
+        <p>Logged in!</p>
+        <a href="{{url_for('logout')}}">Logout</a>
+        <br/><br/><br/>
+        <a href="{{url_for('deleteAccount')}}">Delete Account?</a>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>CMPE131</title>
+    <body>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        <h1>CMPE131 Website Login</h1>
+        <br/>
+        <form action=""method="POST">
+            {{form.hidden_tag()}}
+            <p>
+            {{form.username.label}}<br>
+            {{form.username(size=32)}}
+            </p>
+            <p>
+            {{form.password.label}}<br>
+            {{form.password(size=32)}}
+            </p>
+            <p>{{form.submit()}}</p>
+        </form>
+        <a href="{{url_for('signup')}}">Sign Up</a>
+    </body>
+</html>
