@@ -20,7 +20,7 @@
 3. Transactions should be submitted within 10ms
 4. Only expected to work on Google Chrome
 
-## Use Cases for 6 functional requirements
+## Use Cases for 8 functional requirements
 1. Add to cart
 - **Pre-condition:** 
   1. Customer has previously made an account and logged in
@@ -63,33 +63,73 @@
         2. System does not undergo "Buy item" sequence
         3. System removes the nonexistent/invalid item
 
-3. Use Case Name
+3. Find items
 - **Pre-condition:**
+  1. Customer has previously made an account and logged in
 - **Trigger:** 
+  1. Customer clicks the "Find items" page
 - **Primary Sequence:**
+  1. System prompts the customer to enter an item in a searchbar
+  2. System also has sorting options available for the customer to list
+  3. Customer enters an item
+  4. System checks if there is a matching item to what the customer enters
+  5. System displays the item
 - **Primary Postconditions:** 
+  1. Customer is able to find a matching item
+  2. Customer is not able to find a matching item
 - **Alternate Sequence:** 
+  1. Customer does not enter any input in searchbar and searches for item
+        1. System prompts customer to enter an item
 
-4. Use Case Name
+4. Bid on items
 - **Pre-condition:**
+  1. The customer has previously made an account and logged in
 - **Trigger:** 
+  1. Customer clicks "Bid" on item's page
 - **Primary Sequence:**
+  1. System prompts the customer with a "Bid?" confirmation.
+  2. Customer confirms if they want to make a bid
+  3. System checks if the item is open to bidding
+  4. System prompts customer how much they want to bid on the item
+  5. Customer enters amount they would like to bid
+  6. System checks if credit card information is already set
+  7. System prompts customer to enter credit card information if not set
+  8. Customer enters credit card information
+  9. System prompts that item has been bid on 
 - **Primary Postconditions:** 
+  1. Customer makes a bid on item
+  2. Customer chooses to not make a bid after clicking "Bid?"
 - **Alternate Sequence:** 
+  1. Customer enters no amount to bid on item
+	1. System prompts the customer to enter an amount to bid 
 
-5. Use Case Name
+5. User Profiles
 - **Pre-condition:**
-- **Trigger:** 
+	1. User has previously made an account
+- **Trigger:**
+	1. User clicks profile button on seller
 - **Primary Sequence:**
-- **Primary Postconditions:** 
-- **Alternate Sequence:** 
+	1. System loads seller page from file
+	2. System displays page
+- **Primary Postconditions:**
+	1. has previously made an account
+- **Alternate Sequence:**
+	1. User does not click on profile of seller
+	2. No action is performed by system
 
-6. Use Case Name
+6. Connect with Google Calendar API*
 - **Pre-condition:**
+	1. Item sold has registered dates for bidding
 - **Trigger:** 
+	1. Seller posts item with bidding dates
 - **Primary Sequence:**
-- **Primary Postconditions:** 
+	1. User clicks button to see selling dates in google calendar
+	2. System retrieves google calendar for seller's items
+- **Primary Postconditions:**
+	1. System displays google calendar info
 - **Alternate Sequence:** 
+	1. User does not request google calendar info
+	2. No action required from system
 
 7. User ratings
 - **Pre-condition:**
