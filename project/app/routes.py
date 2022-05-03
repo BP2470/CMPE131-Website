@@ -73,8 +73,8 @@ def login():
         # login_user(user)
 
 @myapp_obj.route("/")
-def default():
-    return redirect('home')
+def splash():
+    return render_template('splash.html', title='Splash')
 
 @myapp_obj.route("/home")
 def home():
@@ -85,7 +85,9 @@ def home():
 @login_required
 @myapp_obj.route('/profile')
 def profile():
-    return render_template('profile.html')
+    user = User.query.filter_by(username=current_user.username).first()
+    email = user.email
+    return render_template('profile.html', user=user, email=email)
 
 @myapp_obj.route("/logout")
 @login_required
