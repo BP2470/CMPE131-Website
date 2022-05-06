@@ -85,9 +85,13 @@ def home():
 @login_required
 @myapp_obj.route('/profile')
 def profile():
-    user = User.query.filter_by(username=current_user.username).first()
-    email = user.email
-    return render_template('profile.html', user=user, email=email)
+    try:
+        user = User.query.filter_by(username=current_user.username).first()
+        email = user.email
+        return render_template('profile.html', user=user, email=email)
+    except:
+        pass
+    return redirect(url_for('home'))
 
 @myapp_obj.route("/logout")
 @login_required
