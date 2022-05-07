@@ -13,18 +13,22 @@
             </ul>
           {% endif %}
         {% endwith %}
-        <br/><br/>
-        <a href="{{url_for('signup')}}">Sign up</a>
-        <br/><br/>
-        <a href="{{url_for('login')}}">Sign in</a>
+		
+        <a href="{{url_for('home')}}">Back to Home</a>
 		<br/><br/>
-        <a href="{{url_for('all')}}">See all Items</a>
-		<br/><br/>
-		<br/><br/>
-		<h3>Buy and Sell Tutorial</h3>
-		<video width="320" height="240" controls>
-			<source src={{ url_for('static', filename="Rick Astley - Never Gonna Give You Up (Official Music Video) 8mb.mp4") }} type="video/mp4">
-			Your browser does not support the video tag.
-		</video>
+		
+		{% for form in forms %}
+        <h2>Seller: {{form.user.username}}</h2>
+			<ul>
+			<li>{{form.post.body}} - Price: $100.00
+				<form action=""method="POST">
+					{{form.hidden_tag()}}
+					{{form.cardNumber.label}}
+					{{form.cardNumber(size=32)}}
+					{{form.submit()}}
+				</form>
+			</li></ul>
+        {% endfor %}
+        
     </body>
 </html>
