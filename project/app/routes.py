@@ -32,6 +32,15 @@ class DeleteAccount(FlaskForm):
     delete = SubmitField('Delete')
 class addPost(FlaskForm):
     post = StringField('Post', validators=[DataRequired()])
+class buyForm(FlaskForm):
+    cardNumber = StringField('Buy with Credit Card:', validators=[DataRequired()])
+    submit = SubmitField('Buy')
+    user = 0
+    post = 0
+    #def __init__(self, myUser, myPost):
+        #self.user = myUser
+        #self.post = myPost
+        #super(buyForm, self).__init__(myUser, myPost)
 #----------------------------------------------------------------------------#
 #Routes for no login session
 @myapp_obj.route("/SignUp", methods=['GET', 'POST'])
@@ -94,6 +103,25 @@ def profile():
         flash('Post added!', 'success')
         return redirect(url_for('profile'))
     return render_template('profile.html', user=user, email=email, form=form, post=post)
+
+@myapp_obj.route('/all', methods=['GET','POST'])
+def all():
+    forms = []
+    users = db.session.query(User).all()
+    for user in users:
+        for post in user.posts:
+            forms.append(buyForm())
+            forms[len(forms)-1].user = user
+            forms[len(forms)-1].post = post
+    for form in forms:
+        if form.validate_on_submit():
+            Post.query.filter_by(timestamp=form.post.timestamp).delete()
+            #db.session.query(Post).filter_by(id=form.post.id).delete()
+            db.session.commit()
+            return redirect(url_for('all'))
+    
+    return render_template('all.html', forms=forms)
+    
 
 @myapp_obj.route("/logout")
 @login_required
