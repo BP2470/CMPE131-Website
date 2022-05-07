@@ -1,5 +1,6 @@
 from app import myapp_obj
 from app.models import User
+from app.models import Post
 from app import db
 
 from flask import render_template, flash, redirect, url_for, request
@@ -28,6 +29,8 @@ class SignUpForm(FlaskForm):
     submit = SubmitField('Submit')
 class DeleteAccount(FlaskForm):
     delete = SubmitField('Delete')
+class addPost(FlaskForm):
+    post = StringField('Post', validators=[DataRequired()])
 #----------------------------------------------------------------------------#
 @myapp_obj.route("/SignUp", methods=['GET', 'POST'])
 def signup():
@@ -83,15 +86,19 @@ def home():
     return render_template('home.html')
 
 @login_required
-@myapp_obj.route('/profile')
+@myapp_obj.route('/profile', methods=['GET', 'POST'])
 def profile():
-    try:
-        user = User.query.filter_by(username=current_user.username).first()
-        email = user.email
-        return render_template('profile.html', user=user, email=email)
-    except:
-        pass
-    return redirect(url_for('home'))
+    user = User.query.filter_by(username=current_user.username).first()
+    email = user.email
+    form = addPost()
+    post = user.posts
+    if request.method == 'POST':
+        post = Post(body=form.post.data, timestamp=datetime.utcnow(), user_id=user.id)
+        db.session.add(post)
+        db.session.commit()
+        flash('Post added!', 'success')
+        return redirect(url_for('profile'))
+    return render_template('profile.html', user=user, email=email, form=form, post=post)
 
 @myapp_obj.route("/logout")
 @login_required
