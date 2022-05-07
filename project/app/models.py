@@ -1,7 +1,7 @@
 from app import db
 from app import login
 from flask_login import UserMixin
-from datetime import datetime
+import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(UserMixin, db.Model):
@@ -26,7 +26,8 @@ class User(UserMixin, db.Model):
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(256))
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    timestamp = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
