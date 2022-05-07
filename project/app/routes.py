@@ -88,15 +88,6 @@ def home():
 @login_required
 @myapp_obj.route('/profile', methods=['GET', 'POST'])
 def profile():
-<<<<<<< HEAD
-    try:
-        user = User.query.filter_by(username=current_user.username).first()
-        email = user.email
-        return render_template('profile.html', user=user, email=email)
-    except:
-        pass
-    return redirect(url_for('home'))
-=======
     user = User.query.filter_by(username=current_user.username).first()
     email = user.email
     form = addPost()
@@ -108,7 +99,6 @@ def profile():
         flash('Post added!', 'success')
         return redirect(url_for('profile'))
     return render_template('profile.html', user=user, email=email, form=form, post=post)
->>>>>>> 2131f10b73f91c602e162f4d9137c946dc4dd892
 
 @myapp_obj.route("/logout")
 @login_required
