@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>CMPE131</title>
+		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	</head>
+    <body>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+		
+        <a href="{{url_for('home')}}">Back to Home</a>
+		<br/><br/>
+		
+		<form action=""method="POST">
+			{{search.hidden_tag()}}
+			{{search.query.label}}
+			{{search.query(size=32)}}
+			{{search.submit()}}
+		</form>
+		
+		{% for form in forms %}
+        <h2>Seller: {{form.user.username}}</h2>
+			<ul>
+			<li>{{form.post.body}} - Price: $100.00
+				<form action=""method="POST">
+					{{form.hidden_tag()}}
+					{{form.cardNumber.label}}
+					{{form.cardNumber(size=32)}}
+					{{form.submit()}}
+				</form>
+			</li></ul>
+        {% endfor %}
+        
+    </body>
+</html>
