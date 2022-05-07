@@ -17,6 +17,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 #----------------------------------------------------------------------------#
+#Minor class contructors for routes and html building
 class LoginForm(FlaskForm):
     username = StringField('User Name', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
@@ -32,6 +33,7 @@ class DeleteAccount(FlaskForm):
 class addPost(FlaskForm):
     post = StringField('Post', validators=[DataRequired()])
 #----------------------------------------------------------------------------#
+#Routes for no login session
 @myapp_obj.route("/SignUp", methods=['GET', 'POST'])
 def signup():
     if current_user.is_authenticated:
@@ -67,14 +69,6 @@ def login():
             flash('Login Unsuccessful. Please check username and password', 'danger')
     return render_template('login.html', title='Login',form=form)
 
-    # create form
-    # if form inputs are valid
-        # search database for username
-        # user = User.query.filter_by(...)
-        # check the password
-        # if password matches
-        # login_user(user)
-
 @myapp_obj.route("/")
 def splash():
     return render_template('splash.html', title='Splash')
@@ -84,7 +78,8 @@ def home():
     if current_user.is_authenticated:
         return redirect(url_for('profile'))
     return render_template('home.html')
-
+#----------------------------------------------------------------------------#
+#Routes for login session
 @login_required
 @myapp_obj.route('/profile', methods=['GET', 'POST'])
 def profile():
@@ -102,14 +97,14 @@ def profile():
 
 @myapp_obj.route("/logout")
 @login_required
-def logout():
+def logout(): #Connected to profile.html 'log out' button
     logout_user()
     flash('Logging out...', 'success')
     return redirect('home')
 
 @myapp_obj.route("/deleteAccount", methods=['GET','POST'])
 @login_required
-def deleteAccount():
+def deleteAccount(): #Connected to profile.html 'delete account' button
     form = DeleteAccount()
     if request.method == 'POST':
         current_user.delete()

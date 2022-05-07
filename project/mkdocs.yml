@@ -1,1 +1,7 @@
-site_name: My Docs
+site_name: CMPE131 Website Documentation
+site_url: http://127.0.0.1:5000/
+nav:
+    - Home: index.md
+    - About: about.md
+
+theme: readthedocs
