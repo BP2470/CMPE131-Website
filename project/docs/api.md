@@ -107,6 +107,15 @@ Parameters
         * addPost - class for StringField
 ----------
 ----------
+`class buyForm(FlaskForm)`
+----------
+Parameters
+* `FlaskForm` - Flask-specific subclass of WTForms 
+    * Constructor Parameters
+        * cardNumber - class for StringField
+        * submit - class for SubmitField
+----------
+----------
 ----------
 ## Functions
 `def load_user(id)`
@@ -150,5 +159,10 @@ Logs the user out of the session
 Deletes the user account from the database
 * Return
     * A render template of delete.html
+----------
+`def all()`
+Retrieves and shows all item posts from all Users
+* Return
+    * A render template of all.html
 ----------
 

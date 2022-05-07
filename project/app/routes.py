@@ -104,6 +104,7 @@ def profile():
         return redirect(url_for('profile'))
     return render_template('profile.html', user=user, email=email, form=form, post=post)
 
+@login_required
 @myapp_obj.route('/all', methods=['GET','POST'])
 def all():
     forms = []
