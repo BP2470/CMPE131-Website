@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>CMPE131</title>
+    <body>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        <br/>
+        <h1> Find Items </h1>
+        <form action=""method="POST">
+          <input id="search" onkeyup="searchItems()" type="text" name="search" placeholder="Enter item...">
+          <button>Search</button>
+          <br/>
+          <ul id="items">
+            <li>Test1 from P1</li>
+            <li>Test2 from P2</li>
+            <li>Test3 from P3</li>
+            <li>Test4 from P4</li>
+          </ul>
+        </form>
+    </body>
+</html>

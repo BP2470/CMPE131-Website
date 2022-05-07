@@ -30,6 +30,8 @@ class DeleteAccount(FlaskForm):
     delete = SubmitField('Delete')
 class addPost(FlaskForm):
     post = StringField('Post', validators=[DataRequired()])
+class searchItem(FlaskForm):
+    search = StringField('Search', validators=[DataRequired()])
 #----------------------------------------------------------------------------#
 @myapp_obj.route("/SignUp", methods=['GET', 'POST'])
 def signup():
@@ -116,3 +118,19 @@ def deleteAccount():
         flash('Deleted Account', 'success')
         return redirect('home')
     return render_template('delete.html',form=form)
+
+@myapp_obj.route("/search", methods=['GET', 'POST'])
+@login_required
+def searchItem():
+    form = searchItem()
+    user = db.session.query(User).all()
+    email = user.email
+    items = []
+    post = user.posts
+    if form.validate_on_submit():
+        for x in user:
+            for y in user.post:
+                if(post.body.__eq__(post.body)):
+                    items.append(post)
+                else:
+                    flash('Item not found')
