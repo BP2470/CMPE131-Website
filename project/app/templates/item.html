@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>CMPE131</title>
+		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	</head>
+    <body>
+		{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+				<ul class=flashes>
+				{% for category, message in messages %}
+					<li class="{{ category }}">{{ message }}</li>
+				{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+		
+		<a href="{{url_for('home')}}">Back to Home</a>
+		<br/><br/>
+		
+		<center>
+		<br><br>
+		{% if item_form	%}
+			<h1>{{item_form.post.body}}</h1>
+			<p>Posted by <b>{{item_form.user.username}}</b> on {{item_form.post.timestamp}}</p>
+			
+			{% if item_form.post.is_auction %}
+				<h3>Starting Price = ${{item_form.post.price}}</h3>
+				<p>Bids left: {{item_form.post.is_auction}}</p>
+				<form action=""method="POST">
+					{{item_form.hidden_tag()}}
+					Raise bid to price: $
+					{{item_form.cardNumber(size=8)}}
+					<input type="submit" value="Place bid">
+				</form>
+			{% else %}
+				<h3>Price = ${{item_form.post.price}}</h3>
+				<form action=""method="POST">
+					{{item_form.hidden_tag()}}
+					{{item_form.cardNumber.label}}
+					{{item_form.cardNumber(size=32)}}
+					{{item_form.submit()}}
+				</form>
+			{% endif %}
+		{% else %}
+			<ul>Error 404: item not found</ul>
+		{% endif %}
+		
+    </center></body>
+</html>

@@ -13,19 +13,38 @@
             </ul>
           {% endif %}
         {% endwith %}
-        <h1>User: {{user.username}}</h1>
-        <h1>Email: {{email}}</h1>
-        <h2>Post: {% for p in user.posts%}</h2>
-        <h3>{{p.body}} - Time: {{p.timestamp}}</h3> 
-        {% endfor %}
-        <h2>Add Post: </h2>
-        <form action=""method="POST">
-            <textarea type="text" name="post" rows="4" cols="50" placeholder="Post"></textarea>
-            <br />
-            <input type="submit" value="submit">
-            
-        </form>
-
+		
+		{% if user.id|int() != page_owner.id|int() %}
+			<a href="{{url_for('home')}}">Back to Home</a>
+		{% endif %}
+		
+        <h1>User: {{page_owner.username}}</h1>
+        <h3>Email: {{page_owner.email}}</h3>
+		<center>
+        <h2>Items for sale:</h2>
+		<table> {% for p in page_owner.posts%}
+			<tr><th style="border:3px; border-style:solid; border-color:#11FF00; padding: 1em;">
+			<h3><a href="{{url_for('.item_page', item_id = p.id)}}">{{p.body}}</a> - ${{p.price}}{% if p.is_auction %} (auction){% endif %}</h3>
+			<p style="font-weight:normal"> Posted on: {{p.timestamp}}</p></th></tr>
+        {% endfor %} </table>
+		<br><br>
+		
+		{% if user.id|int() == page_owner.id|int() %}
+			<h2>Add item: </h2>
+			<form action=""method="POST">
+				<textarea type="text" name="item" rows="1" cols="32" placeholder="Item Name"></textarea>
+				<br />
+				{{form.hidden_tag()}}
+				{{form.price.label}}
+				{{form.price(size=8)}}
+				<br>
+				{{form.is_auction.label}}
+				{{form.is_auction()}}
+				<br>
+				<input type="submit" value="submit">
+			</form>
+		{% endif %}
+		</center>
         <br/><br/><br/>
 		<a href="{{url_for('all')}}">See all Items for sale</a>
 		<br/><br/>
