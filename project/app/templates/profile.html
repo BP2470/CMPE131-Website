@@ -25,18 +25,22 @@
 		<table> {% for p in page_owner.posts%}
 			<tr><th style="border:3px; border-style:solid; border-color:#11FF00; padding: 1em;">
 			<h3><a href="{{url_for('.item_page', item_id = p.id)}}">{{p.body}}</a> - ${{p.price}}{% if p.is_auction %} (auction){% endif %}</h3>
-			<p style="font-weight:normal"> Posted on: {{p.timestamp}}</p></th></tr>
+			<p style="font-weight:normal"> Posted on: {{p.timestamp}}</p>
+			<img src="http://127.0.0.1:5000/static/img/{{p.filelink}}"width="300" height="300"</p>
+			</th></tr>
         {% endfor %} </table>
 		<br><br>
-		
 		{% if user.id|int() == page_owner.id|int() %}
 			<h2>Add item: </h2>
-			<form action=""method="POST">
+			<form action=""method="POST"enctype="multipart/form-data">
 				<textarea type="text" name="item" rows="1" cols="32" placeholder="Item Name"></textarea>
 				<br />
 				{{form.hidden_tag()}}
 				{{form.price.label}}
 				{{form.price(size=8)}}
+				<br>
+				<p style="font-weight:normal"> Upload image?</p>
+				<input type=file name=file accept="image/png, image/jpeg">
 				<br>
 				{{form.is_auction.label}}
 				{{form.is_auction()}}
