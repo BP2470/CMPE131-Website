@@ -28,6 +28,7 @@
 						<h3><a href="{{url_for('.item_page', item_id = user.posts[i].id)}}">{{user.posts[i].body}}</a>
 						- ${{user.posts[i].price}}{% if user.posts[i].is_auction %} (auction){% endif %}</h3>
 						<p style="font-weight:normal"> Posted on: {{user.posts[i].timestamp}}</p>
+						<p><img src="http://127.0.0.1:5000/static/img/{{user.posts[i].filelink}}"width="300" height="300"</p>
 					</th>
 				</tr>
 			{% endfor %} </table> <br><br><hr><br><br>

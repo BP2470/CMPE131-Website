@@ -10,7 +10,7 @@
 9. Add item to seller store
 10. User profiles
 11. See all items available from all of the sellers
-12. Connect with Google Calendar API*
+12. Add picture to items*
 13. User ratings
 14. Splash Page
 
@@ -117,19 +117,19 @@
 	1. User does not click on profile of seller
 	2. No action is performed by system
 
-6. Connect with Google Calendar API*
+6. Add picture to items*
 - **Pre-condition:**
-	1. Item sold has registered dates for bidding
+	1. User has previously made an account
 - **Trigger:** 
-	1. Seller posts item with bidding dates
+	1. Seller posts item
 - **Primary Sequence:**
-	1. User clicks button to see selling dates in google calendar
-	2. System retrieves google calendar for seller's items
+	1. Seller clicks button to upload image to item post
+	2. System retrieves image and saves to database
 - **Primary Postconditions:**
-	1. System displays google calendar info
+	1. System displays image and item post
 - **Alternate Sequence:** 
-	1. User does not request google calendar info
-	2. No action required from system
+	1. User does not upload image
+	2. System will not place item in system
 
 7. User ratings
 - **Pre-condition:**
