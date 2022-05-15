@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from app import db
 from app import login
 from flask_login import UserMixin
@@ -31,7 +32,9 @@ class Post(db.Model):
     price = db.Column(db.Integer)
     is_auction = db.Column(db.SmallInteger)
     timestamp = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-
+    filename = db.Column(db.String(256))
+    filelink = db.Column(db.String(30))
+    
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     in_cart = db.Column(db.Boolean)
 

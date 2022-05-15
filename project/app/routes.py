@@ -3,8 +3,9 @@ from app.models import User
 from app.models import Post
 from app import db
 
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, send_file
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileRequired
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, FormField, IntegerField, SelectField
 from wtforms.validators import DataRequired
 
@@ -16,6 +17,9 @@ from flask_login import login_required
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
+
+import string, random, os
 #----------------------------------------------------------------------------#
 class LoginForm(FlaskForm):
     username = StringField('User Name', validators=[DataRequired()])
@@ -33,6 +37,7 @@ class addPost(FlaskForm):
     item = StringField('Post', validators=[DataRequired()])
     price = IntegerField('Item price:', validators=[DataRequired()])
     is_auction = BooleanField('Set item to auction?:')
+    file = FileField(validators=[FileRequired()])
 class buyForm(FlaskForm):
     cardNumber = IntegerField('Buy with Credit Card:', validators=[DataRequired()])
     submit = SubmitField('Buy')
@@ -43,9 +48,12 @@ class searchForm(FlaskForm):
     select = SelectField('Search for:', choices=choices)
     query = StringField('', validators=[DataRequired()])
     submit = SubmitField('Search')
-    
 #----------------------------------------------------------------------------#
-    
+def get_random_string(length):
+    # Combination of lower and upper
+    letters = string.ascii_letters
+    return ''.join(random.choice(letters) for i in range(length))
+#----------------------------------------------------------------------------#
 @myapp_obj.route("/SignUp", methods=['GET', 'POST'])
 def signup():
     if current_user.is_authenticated:
@@ -93,7 +101,6 @@ def home():
         return redirect(url_for('profile', username=current_user.username, id=current_user.id))
     return render_template('home.html')
 
-
 @login_required
 @myapp_obj.route('/profile/<username>_<id>', methods=['GET', 'POST'])
 def profile(username, id):
@@ -103,7 +110,13 @@ def profile(username, id):
     form = addPost()
     post = user.posts
     if request.method == 'POST' and form.validate():
-        post = Post(body=form.item.data, price=form.price.data, is_auction=0, timestamp=datetime.utcnow(), user_id=user.id, in_cart=False)
+        f = form.file.data
+        fn = secure_filename(f.filename) #Just adding actual name of image
+        ext = os.path.splitext(fn)[1]
+        new_filename = get_random_string(20) #Ensures no duplicate images
+        new_name = new_filename+ext
+        f.save(os.path.join(myapp_obj.config['IMAGEFOLDER'], new_name))
+        post = Post(body=form.item.data, price=form.price.data, filename = fn, filelink=new_name, is_auction=0, timestamp=datetime.utcnow(), user_id=user.id, in_cart=False)
         if form.is_auction.data == True:
             post.is_auction = 3
         db.session.add(post)
@@ -132,7 +145,6 @@ def search():
                 return User.query.get(id)
             return render_template('search.html', search=search, posts=posts, getUser=getUser)
     return render_template('search.html', search=search)
-
 
 @myapp_obj.route('/item/id:<item_id>', methods=['GET', 'POST'])
 def item_page(item_id):
