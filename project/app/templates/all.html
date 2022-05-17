@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>CMPE131</title>
+		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	</head>
+    <body>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+		
+        <a href="{{url_for('home')}}">Back to Home</a>
+		<center><br/><h1>All Items</h1><br/>
+		{% for user in users %}
+			<table> {% for i in range(user.posts|length) %}
+				<tr>
+					{% if i|int() == 0 %}
+						<th rowspan="{{user.posts|length}}" style="border:3px; border-style:solid; border-color:#FFBB00; padding: 1em;">
+						<h2><a href="{{url_for('profile', username=user.username, id=user.id)}}">{{user.username}}</a></h2>
+						</th>
+					{% endif %}
+					<th style="border:3px; border-style:solid; border-color:#11FF00; padding: 1em;">
+						<h3><a href="{{url_for('.item_page', item_id = user.posts[i].id)}}">{{user.posts[i].body}}</a>
+						- ${{user.posts[i].price}}{% if user.posts[i].is_auction %} (auction){% endif %}</h3>
+						<p style="font-weight:normal"> Posted on: {{user.posts[i].timestamp}}</p>
+						<p><img src="http://127.0.0.1:5000/static/img/{{user.posts[i].filelink}}"width="300" height="300"</p>
+					</th>
+				</tr>
+			{% endfor %} </table> <br><br><hr><br><br>
+        {% endfor %}
+        </center>
+    </body>
+</html>

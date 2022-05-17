@@ -1,6 +1,8 @@
 <html>
     <head>
         <title>CMPE131</title>
+		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	</head>
     <body>
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}
@@ -11,6 +13,7 @@
             </ul>
           {% endif %}
         {% endwith %}
+<<<<<<< HEAD
         <h1>User: {{user.username}}</h1>
         <h1>Email: {{email}}</h1>
         <h2>Post: {% for p in user.posts%}</h2>
@@ -25,6 +28,49 @@
         </form>
 
         <br/> 
+=======
+		
+		{% if user.id|int() != page_owner.id|int() %}
+			<a href="{{url_for('home')}}">Back to Home</a>
+		{% endif %}
+		
+        <h1>User: {{page_owner.username}}</h1>
+        <h3>Email: {{page_owner.email}}</h3>
+		<center>
+        <h2>Items for sale:</h2>
+		<table> {% for p in page_owner.posts%}
+			<tr><th style="border:3px; border-style:solid; border-color:#11FF00; padding: 1em;">
+			<h3><a href="{{url_for('.item_page', item_id = p.id)}}">{{p.body}}</a> - ${{p.price}}{% if p.is_auction %} (auction){% endif %}</h3>
+			<p style="font-weight:normal"> Posted on: {{p.timestamp}}</p>
+			<img src="http://127.0.0.1:5000/static/img/{{p.filelink}}"width="300" height="300"</p>
+			</th></tr>
+        {% endfor %} </table>
+		<br><br>
+		{% if user.id|int() == page_owner.id|int() %}
+			<h2>Add item: </h2>
+			<form action=""method="POST"enctype="multipart/form-data">
+				<textarea type="text" name="item" rows="1" cols="32" placeholder="Item Name"></textarea>
+				<br />
+				{{form.hidden_tag()}}
+				{{form.price.label}}
+				{{form.price(size=8)}}
+				<br>
+				<p style="font-weight:normal"> Upload image?</p>
+				<input type=file name=file accept="image/png, image/jpeg">
+				<br>
+				{{form.is_auction.label}}
+				{{form.is_auction()}}
+				<br>
+				<input type="submit" value="submit">
+			</form>
+		{% endif %}
+		</center>
+        <br/><br/><br/>
+		<a href="{{url_for('all')}}">See all Items for sale</a>
+		<br/><br/>
+        <a href="{{url_for('search')}}">Search for specific item</a>
+		<br/><br/><br/>
+>>>>>>> origin/master
         <p>Logged in!</p>
         <a href="{{url_for('logout')}}">Logout</a>
         <br/><br/><br/>

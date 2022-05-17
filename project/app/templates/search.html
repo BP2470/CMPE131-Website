@@ -1,6 +1,11 @@
 <html>
     <head>
         <title>CMPE131</title>
+<<<<<<< HEAD
+=======
+		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	</head>
+>>>>>>> origin/master
     <body>
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}
@@ -11,6 +16,7 @@
             </ul>
           {% endif %}
         {% endwith %}
+<<<<<<< HEAD
         <br/>
         <h1> Find Items </h1>
         <form action=""method="POST">
@@ -24,5 +30,38 @@
             <li>Test4 from P4</li>
           </ul>
         </form>
+=======
+		
+        <a href="{{url_for('home')}}">Back to Home</a>
+		<br/><br/>
+		
+		<ul>
+			<form action=""method="POST">
+				{{search.hidden_tag()}}
+				{{search.select.label}}
+				{{search.select()}}
+				{{search.query(size=32)}}
+				{{search.submit()}}
+			</form>
+		</ul>
+        <br><br>
+		{% if user %}
+			<center><table><tr>
+				<th style="border:3px; border-style:solid; border-color:#FFBB00; padding: 1em;">
+					<h2><a href="{{url_for('profile', username=user.username, id=user.id)}}">{{user.username}}</a></h2>
+				</th>
+			</tr></table></center>
+		{% endif %}
+		{% if posts %}
+			<table> {% for p in posts%}
+			<tr><th style="border:3px; border-style:solid; border-color:#11FF00; padding: 1em;">
+				<h3><a href="{{url_for('.item_page', item_id = p.id)}}">{{p.body}}</a> - ${{p.price}}{% if p.is_auction %} (auction){% endif %}</h3>
+				<p style="font-weight:normal"> Posted on: {{p.timestamp}},</p>
+				<p>by <a href="{{url_for('profile', username=getUser(p.user_id).username, id=p.user_id)}}">{{getUser(p.user_id).username}}</a></p>
+			</th></tr>
+        {% endfor %} </table>
+		{% endif %}
+		
+>>>>>>> origin/master
     </body>
 </html>
