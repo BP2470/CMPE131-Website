@@ -192,3 +192,19 @@ def deleteAccount():
         flash('Deleted Account', 'success')
         return redirect('home')
     return render_template('delete.html',form=form)
+
+@myapp_obj.route("/search", methods=['GET', 'POST'])
+@login_required
+def searchItem():
+    form = searchItem()
+    user = db.session.query(User).all()
+    email = user.email
+    items = []
+    post = user.posts
+    if form.validate_on_submit():
+        for x in user:
+            for y in user.post:
+                if(post.body.__eq__(post.body)):
+                    items.append(post)
+                else:
+                    flash('Item not found')
