@@ -13,22 +13,6 @@
             </ul>
           {% endif %}
         {% endwith %}
-<<<<<<< HEAD
-        <h1>User: {{user.username}}</h1>
-        <h1>Email: {{email}}</h1>
-        <h2>Post: {% for p in user.posts%}</h2>
-        <h3>{{p.body}} Time: {{p.timestamp}}</h3> 
-        {% endfor %}
-        <h2>Add Post: </h2>
-        <form action=""method="POST">
-            <textarea type="text" name="post" rows="4" cols="50" placeholder="Post"></textarea>
-            <br />
-            <input type="submit" value="submit">
-            
-        </form>
-
-        <br/> 
-=======
 		
 		{% if user.id|int() != page_owner.id|int() %}
 			<a href="{{url_for('home')}}">Back to Home</a>
@@ -70,7 +54,6 @@
 		<br/><br/>
         <a href="{{url_for('search')}}">Search for specific item</a>
 		<br/><br/><br/>
->>>>>>> origin/master
         <p>Logged in!</p>
         <a href="{{url_for('logout')}}">Logout</a>
         <br/><br/><br/>

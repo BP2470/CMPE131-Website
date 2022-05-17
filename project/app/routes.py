@@ -34,11 +34,6 @@ class SignUpForm(FlaskForm):
 class DeleteAccount(FlaskForm):
     delete = SubmitField('Delete')
 class addPost(FlaskForm):
-<<<<<<< HEAD
-    post = StringField('Post', validators=[DataRequired()])
-class searchItem(FlaskForm):
-    search = StringField('Search', validators=[DataRequired()])
-=======
     item = StringField('Post', validators=[DataRequired()])
     price = IntegerField('Item price:', validators=[DataRequired()])
     is_auction = BooleanField('Set item to auction?:')
@@ -58,7 +53,6 @@ def get_random_string(length):
     # Combination of lower and upper
     letters = string.ascii_letters
     return ''.join(random.choice(letters) for i in range(length))
->>>>>>> origin/master
 #----------------------------------------------------------------------------#
 @myapp_obj.route("/SignUp", methods=['GET', 'POST'])
 def signup():
@@ -108,27 +102,13 @@ def home():
     return render_template('home.html')
 
 @login_required
-<<<<<<< HEAD
-@myapp_obj.route('/profile', methods=['GET', 'POST'])
-def profile():
-=======
 @myapp_obj.route('/profile/<username>_<id>', methods=['GET', 'POST'])
 def profile(username, id):
->>>>>>> origin/master
     user = User.query.filter_by(username=current_user.username).first()
     page_owner = User.query.filter_by(username=username).first()
     email = user.email
     form = addPost()
     post = user.posts
-<<<<<<< HEAD
-    if request.method == 'POST':
-        post = Post(body=form.post.data, timestamp=datetime.utcnow(), user_id=user.id)
-        db.session.add(post)
-        db.session.commit()
-        flash('Post added!', 'success')
-        return redirect(url_for('profile'))
-    return render_template('profile.html', user=user, email=email, form=form, post=post)
-=======
     if request.method == 'POST' and form.validate():
         f = form.file.data
         fn = secure_filename(f.filename) #Just adding actual name of image
@@ -193,7 +173,6 @@ def item_page(item_id):
         
         return render_template('item.html', item_form=item_form)
 
->>>>>>> origin/master
 
 @myapp_obj.route("/logout")
 @login_required

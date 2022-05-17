@@ -1,11 +1,8 @@
 <html>
     <head>
         <title>CMPE131</title>
-<<<<<<< HEAD
-=======
 		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 	</head>
->>>>>>> origin/master
     <body>
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}
@@ -16,21 +13,6 @@
             </ul>
           {% endif %}
         {% endwith %}
-<<<<<<< HEAD
-        <br/>
-        <h1> Find Items </h1>
-        <form action=""method="POST">
-          <input id="search" onkeyup="searchItems()" type="text" name="search" placeholder="Enter item...">
-          <button>Search</button>
-          <br/>
-          <ul id="items">
-            <li>Test1 from P1</li>
-            <li>Test2 from P2</li>
-            <li>Test3 from P3</li>
-            <li>Test4 from P4</li>
-          </ul>
-        </form>
-=======
 		
         <a href="{{url_for('home')}}">Back to Home</a>
 		<br/><br/>
@@ -62,6 +44,5 @@
         {% endfor %} </table>
 		{% endif %}
 		
->>>>>>> origin/master
     </body>
 </html>
