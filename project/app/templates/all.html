@@ -29,7 +29,7 @@
 						- ${{user.posts[i].price}}{% if user.posts[i].is_auction %} (auction){% endif %}</h3>
 						<p style="font-weight:normal"> Posted on: {{user.posts[i].timestamp}}</p>
 						<p><img src="http://127.0.0.1:5000/static/img/{{user.posts[i].filelink}}"width="300" height="300"</p>
-						<link rel="stylesheet" href="{{ url_for('static', filename='star.css') }}">
+						<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='star.css') }}">
 							<div class="rate">
 								<p>Rating: 
 								<input type="radio" id="star5" name="rate" value="5" />
