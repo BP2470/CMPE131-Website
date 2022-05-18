@@ -195,6 +195,8 @@ def deleteAccount():
         return redirect('home')
     return render_template('delete.html',form=form)
 
+'''
+Dupe
 @myapp_obj.route("/search", methods=['GET', 'POST'])
 @login_required
 def searchItem():
@@ -210,3 +212,4 @@ def searchItem():
                     items.append(post)
                 else:
                     flash('Item not found')
+'''
