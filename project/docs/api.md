@@ -116,6 +116,17 @@ Parameters
         * submit - class for SubmitField
 ----------
 ----------
+`class buyForm(FlaskForm)`
+----------
+Parameters
+* `FlaskForm` - Flask-specific subclass of WTForms 
+    * Constructor Parameters
+        * choices - List field for select class
+        * select - class for SelectField for choices class for options in html
+        * query - class for StringField
+        * submit - class for SubmitField
+----------
+----------
 ----------
 ## Functions
 `def load_user(id)`
@@ -165,4 +176,21 @@ Retrieves and shows all item posts from all Users
 * Return
     * A render template of all.html
 ----------
-
+`def search()`
+Searches for exact User/Item Post based on input from user
+* Return
+    * Item not Found or exact User/Item string
+----------
+`def item_page(item_id)`
+Shows a bidding page for the selected item along with the option to bid
+* Parameter
+    * item_id - ID of Item Post
+* Return
+    * A render template of item.html
+----------
+`def get_random_string`
+Returns a random string of a given length of upper and lower case letters
+* Parameter
+    * length - given length of string that is constant for addPost function
+* Return
+    * A random string of the given length of upper and lower case letters
