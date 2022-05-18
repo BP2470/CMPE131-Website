@@ -34,6 +34,7 @@ class Post(db.Model):
     timestamp = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     filename = db.Column(db.String(256))
     filelink = db.Column(db.String(30))
+    rating = db.Column(db.Integer)
     
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     in_cart = db.Column(db.Boolean)

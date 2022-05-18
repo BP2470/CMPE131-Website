@@ -38,6 +38,7 @@ class addPost(FlaskForm):
     price = IntegerField('Item price:', validators=[DataRequired()])
     is_auction = BooleanField('Set item to auction?:')
     file = FileField(validators=[FileRequired()])
+    rating = IntegerField('rating')
 class buyForm(FlaskForm):
     cardNumber = IntegerField('Buy with Credit Card:', validators=[DataRequired()])
     submit = SubmitField('Buy')
@@ -111,19 +112,20 @@ def profile(username, id):
     post = user.posts
     if request.method == 'POST' and form.validate():
         f = form.file.data
+        rating = form.rating.data
         fn = secure_filename(f.filename) #Just adding actual name of image
         ext = os.path.splitext(fn)[1]
         new_filename = get_random_string(20) #Ensures no duplicate images
         new_name = new_filename+ext
         f.save(os.path.join(myapp_obj.config['IMAGEFOLDER'], new_name))
-        post = Post(body=form.item.data, price=form.price.data, filename = fn, filelink=new_name, is_auction=0, timestamp=datetime.utcnow(), user_id=user.id, in_cart=False)
+        post = Post(body=form.item.data, price=form.price.data, filename = fn, filelink=new_name, is_auction=0, timestamp=datetime.utcnow(), user_id=user.id, in_cart=False, rating=rating)
         if form.is_auction.data == True:
             post.is_auction = 3
         db.session.add(post)
         db.session.commit()
         flash('Post added!', 'success')
         return redirect(url_for('profile', username=current_user.username, id=current_user.id))
-    return render_template('profile.html', user=user, page_owner=page_owner, form=form, post=post)
+    return render_template('profile.html', user=user, page_owner=page_owner, form=form, post=current_user.posts)
 
 
 @myapp_obj.route('/all', methods=['GET','POST'])

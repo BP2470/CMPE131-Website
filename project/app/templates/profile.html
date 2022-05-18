@@ -2,6 +2,15 @@
     <head>
         <title>CMPE131</title>
 		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+		<link rel="stylesheet" href="../static/fa/css/all.css">
+		<style>
+			.starwrapper {
+				color: #b9cb41;
+			}
+			.star {
+				color:#b9cb41;
+			}
+		</style>
 	</head>
     <body>
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -19,6 +28,27 @@
 		{% endif %}
 		
         <h1>User: {{page_owner.username}}</h1>
+		<p>Rating:</p>
+
+		{% for i in page_owner.posts %}
+		{{ i.rating }}
+		{% endfor %}
+		
+		<div class="starwrapper">
+			
+			{% if page_owner.rating == 5 %}
+				{{ page_owner.rating }}	
+			{% else %}
+			<ul class="star">
+				<li class="fas fa-star"></li>
+				<li class="fas fa-star"></li>
+				<li class="fas fa-star"></li>
+				<li class="fas fa-star"></li>
+				<li class="fas fa-star"></li>
+			</ul>
+			{% endif %}
+		</div>
+		
         <h3>Email: {{page_owner.email}}</h3>
 		<center>
         <h2>Items for sale:</h2>
@@ -44,6 +74,8 @@
 				<br>
 				{{form.is_auction.label}}
 				{{form.is_auction()}}
+				<br>
+				<input type="number" name="rating" placeholder="rating">
 				<br>
 				<input type="submit" value="submit">
 			</form>
