@@ -1,12 +1,12 @@
 # CMPE 131 Website Project
 - Brian Pham (@BP2470) Team Lead
-    - Worked on implementation of account creation/deletion,login,logout
+    - Worked on implementation of account creation/deletion,login,logout, and adding pictures to items
 - Andrew Chau (@AndrewC04)
-    - Worked on implementation of adding items and finding items
+    - Worked on implementation of adding items, finding items, and user rating
 - Alexander Iakovlev (@alexander-iakovlev)
-    - Worked on implmentation of seeing all available items from user sellers and buying items
+    - Worked on implmentation of seeing all available items from user sellers, buying/bidding/finding items, and adding items to seller store
 - Wen Luo (@simonluo345)
-    - Worked on implementation of adding items, splash page, and user profile
+    - Worked on implementation of adding items, splash page, user profile, and user rating
 
 # CMPE 131 Project Index
 
@@ -27,9 +27,14 @@ Once installed, make sure to download or clone a copy of the repository of the `
 
 Through your IDE's terminal run the following commands:
 
-* `pip install python` - This ensures an installation of Python on your IDE
-* `pip install flask` - This ensures an installation of Flask on your IDE
+* `pip install Python` - This ensures an installation of Python on your IDE
+* `pip install Flask` - This ensures an installation of Flask on your IDE
+* `pip install WTforms` - This ensures an installation of WTForms on your IDE
+* `pip install Flask-Wtf` - This ensures an installation of Flask WTForms extension on your IDE
+* `pip install Flask-SQLAlchemy` - This ensures an installation of Flask-SQLAlchemy extension on your IDE
 * `py run.py` - This starts the website launch on your local computer. Check notes at bottom of page below.
+
+This is also done for the virtualenv terminal again if the terminal is running it. (Noted by venv tag in terminal)
 
 ## Starting Website
 
@@ -38,7 +43,8 @@ The website should be self-explanatory by going through the home screen and sign
     * Sign Up for website
         * Log in the website
             * Add item posts/search for item/sign out/delete account
-                * Buy item
+                * Add to cart/Bid for item/Buy item
+                    * Buy item
 
 ## Project layout
 
